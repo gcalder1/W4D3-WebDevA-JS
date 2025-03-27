@@ -23,7 +23,7 @@ function applyDamage(opponent, damage) {
     console.log(`${currentPlayer.name} lands a KNOCKOUT on ${opponent.name}!🥊`);
     }
     opponent.health -= damage;
-    if (opponent.health < 0 || damage >= 100) {
+    if (opponent.health < 0 || damage >= 10) {
     // Ensure health doesn't go below 0 and automatic KO
     opponent.health = 0;
     }
