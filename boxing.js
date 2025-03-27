@@ -38,4 +38,40 @@ function checkKnockout(opponent) {
     }
     return false;
     }
-        
+
+// Function to switch turns
+function switchTurns() {
+    currentPlayer = currentPlayer === player1 ? player2 : player1;
+    console.log(`It's now ${currentPlayer.name}'s turn.`);
+    }
+
+// Main gameplay function
+function playTurn() {
+let opponent;
+if (currentPlayer === player1) {
+opponent = player2;
+} else {
+opponent = player1;
+}
+const damage = generateDamage();
+applyDamage(opponent, damage);
+if (checkKnockout(opponent)) {
+return false; // Stop the game if there's a knockout
+}
+switchTurns();
+return true; // Continue the game
+}
+
+// Game loop
+function startGame() {
+console.log("Starting the Boxing Game!");
+console.log(`${player1.name} vs ${player2.name}`);
+while (player1.health > 0 && player2.health > 0) {
+if (!playTurn()) break; // Stop the game if there's a knockout
+}
+console.log("Game Over. Thanks for playing!");
+}
+
+// Start the game
+startGame();
+
